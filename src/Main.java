@@ -221,7 +221,7 @@ public class Main {
 		board.addPath("Atlanta", "Raleigh", 2, 2);
 		board.addPath("Atlanta", "Charleston", 2, 1);
 		board.addPath("Atlanta", "New Orleans", 4, 2);
-		board.addPath("Atlanta", "Miama", 5, 1);
+		board.addPath("Atlanta", "Miami", 5, 1);
 
 		board.addPath("Charleston", "Raleigh", 2, 1);
 		board.addPath("Charleston", "Atlanta", 2, 1);
@@ -230,5 +230,8 @@ public class Main {
 		board.addPath("Miami", "New Orleans", 5, 1);
 		board.addPath("Miami", "Atlanta", 5, 1);
 		board.addPath("Miami", "Charleston", 4, 1);
+
+		// algorithms
+		Kruskal.findPath(board);
 	}
 }

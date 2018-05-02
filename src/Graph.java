@@ -12,8 +12,8 @@ public class Graph {
 	public void addNode(String name) {
 		places.add(name);
 		int[][] newAdjacency = new int[places.size()][places.size()];
-		for (int i = 0; i < places.size(); i++) {
-			for (int j = 0; j < places.size(); j++) {
+		for (int i = 0; i < (places.size() - 1); i++) {
+			for (int j = 0; j < (places.size() - 1); j++) {
 				newAdjacency[i][j] = adjacency[i][j];
 			}
 		}
