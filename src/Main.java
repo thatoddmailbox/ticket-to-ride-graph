@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
 	public static void main(String[] args) {
 		Graph board = new Graph();
@@ -232,6 +234,7 @@ public class Main {
 		board.addPath("Miami", "Charleston", 4, 1);
 
 		// algorithms
-		Kruskal.findPath(board);
+		ArrayList<String> path = Kruskal.findPath(board);
+		System.out.println(path.toString());
 	}
 }
