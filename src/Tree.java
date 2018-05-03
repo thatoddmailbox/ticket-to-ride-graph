@@ -61,12 +61,14 @@ public class Tree {
 		  "To" -> "Web"
 		  "To" -> "GraphViz!"
 		}
+
+		LR_0 -> LR_2 [ label = "SS(B)" ];
 		 */
 
 		buff.append("digraph G {\n");
 
 		for (Edge e: edges) {
-			buff.append("\t\"" + e.firstCity + "\" -> \"" + e.secondCity + "\" \n");
+			buff.append("\t\"" + e.firstCity + "\" -> \"" + e.secondCity + "\"" + "[ label = \"" + e.weight + "\" ];\n");
 		}
 
 		buff.append("}");
