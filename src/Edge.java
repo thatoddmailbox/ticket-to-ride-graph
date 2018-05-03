@@ -25,7 +25,7 @@ public class Edge {
 
 		final Edge other = (Edge) obj;
 
-		if (this.firstCity != other.firstCity || this.secondCity != other.secondCity) {
+		if (!this.firstCity.equals(other.firstCity) || !this.secondCity.equals(other.secondCity)) {
 			return false;
 		}
 
