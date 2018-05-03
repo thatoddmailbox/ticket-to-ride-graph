@@ -21,8 +21,8 @@ public class Kruskal {
 					}
 
 					if (length < smallestLengthFound) {
-						Edge potentialNewEdge = new Edge(from, to);
-						Edge reverseOfNewEdge = new Edge(to, from);
+						Edge potentialNewEdge = new Edge(from, to, length);
+						Edge reverseOfNewEdge = new Edge(to, from, length);
 						if (t.edges.contains(potentialNewEdge) || t.edges.contains(reverseOfNewEdge)) {
 							continue;
 						}
