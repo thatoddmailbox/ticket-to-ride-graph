@@ -20,6 +20,14 @@ public class Graph {
 		adjacency = newAdjacency;
 	}
 
+	public void deletePath(int fromIndex, int toIndex){
+		adjacency[fromIndex][toIndex] = 0;
+		adjacency[toIndex][fromIndex] = 0;
+	}
+	public int numbOfTrees(){
+
+		return 1;
+	}
 	public void addPath(String from, String to, int length, int pathCount) {
 		int fromIndex = places.indexOf(from);
 		int toIndex = places.indexOf(to);

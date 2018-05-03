@@ -3,21 +3,43 @@ import java.util.ArrayList;
 public class reverse_delete {
     public static Graph fsp(Graph initial_graph){
         ArrayList<Integer>[][] sorted_adjacency;
-        ArrayList<path> paths;
+        ArrayList<path> paths = new ArrayList<>();
         boolean sorted = false;
 
         for (int i = 0; i < initial_graph.adjacency.length; i++) {
             for (int j = 0; j < initial_graph.adjacency[i].length; j++) {
+                boolean duplicate = false;
+                System.out.println("HERe");
                 path new_path = new path();
                 new_path.side_a = i;
                 new_path.side_b = j;
                 new_path.weight = initial_graph.adjacency[i][j];
+                for (int k = 0; k < paths.size(); k++) {
+                    if(new_path.side_a == paths.get(k).side_b && new_path.side_b == paths.get(k).side_a){
+                        duplicate = true;
+                    }
+                }
+                if(new_path.weight!=0){
+                    if(duplicate == false){
+                        paths.add(new_path);
+                    }
 
-                //paths.add()
+                }
+
+
                 //[adjancency from] [adjacency to]
             }
         }
+        //sort the list
+
 
         return initial_graph;
+    }
+
+    public static boolean deletingwouldfuckitup(Graph g, path p, ArrayList<path> ps){
+        Graph g2 = g;
+        int estimated_length = ps.size();
+        g2.deletePath(p.side_a, p.side_b);
+        return false;
     }
 }

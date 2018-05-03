@@ -236,5 +236,6 @@ public class Main {
 		// algorithms
 		Tree tree = Kruskal.findTree(board);
 		System.out.println(tree.edges.toString());
+		reverse_delete.fsp(board);
 	}
 }
