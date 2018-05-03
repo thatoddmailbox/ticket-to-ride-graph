@@ -236,5 +236,6 @@ public class Main {
 		// algorithms
 		Tree tree = Kruskal.findTree(board);
 		System.out.println(tree.edges.toString());
+		System.out.println(tree.getDotFile());
 	}
 }

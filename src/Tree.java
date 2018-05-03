@@ -63,10 +63,10 @@ public class Tree {
 		}
 		 */
 
-		buff.append("digraph G {");
+		buff.append("digraph G {\n");
 
 		for (Edge e: edges) {
-			buff.append("\"" + e.firstCity + "\" -> \"" + e.secondCity + "\"" );
+			buff.append("\t\"" + e.firstCity + "\" -> \"" + e.secondCity + "\" \n");
 		}
 
 		buff.append("}");
