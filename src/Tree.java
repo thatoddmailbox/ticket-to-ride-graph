@@ -51,4 +51,27 @@ public class Tree {
 	public void addEdge(String from, String to, int weight) {
 		addEdge(new Edge(from, to, weight));
 	}
+
+	public String getDotFile() {
+		StringBuffer buff = new StringBuffer();
+
+		/*
+		digraph G {
+		  "Welcome" -> "To"
+		  "To" -> "Web"
+		  "To" -> "GraphViz!"
+		}
+		 */
+
+		buff.append("digraph G {");
+
+		for (Edge e: edges) {
+			buff.append("\"" + e.firstCity + "\" -> \"" + e.secondCity + "\"" );
+		}
+
+		buff.append("}");
+
+		return buff.toString();
+
+	}
 }
