@@ -1,13 +1,11 @@
-import java.util.ArrayList;
-
 public class Kruskal {
-	public static ArrayList<String> findPath(Graph input) {
-		int smallestLengthFound = 9999999;
-		int smallestLengthFrom = -1;
-		int smallestLengthTo = -1;
-		ArrayList<String> edges = new ArrayList<>();
+	public static Tree findTree(Graph input) {
+		int smallestLengthFound = Integer.MAX_VALUE;
+		Edge smallestLengthEdge = null;
 
-		while (edges.size() < (input.places.size() - 1)) {
+		Tree t = new Tree();
+
+		while (t.nodes.size() < (input.places.size() - 1)) {
 			for (int x = 0; x < input.adjacency.length; x++) {
 				for (int y = 0; y < input.adjacency[0].length; y++) {
 					if (x == y) {
@@ -23,21 +21,22 @@ public class Kruskal {
 					}
 
 					if (length < smallestLengthFound) {
-						if (edges.contains(from)) {
+						Edge potentialNewEdge = new Edge(from, to);
+						Edge reverseOfNewEdge = new Edge(to, from);
+						if (t.edges.contains(potentialNewEdge) || t.edges.contains(reverseOfNewEdge)) {
 							continue;
 						}
 						smallestLengthFound = length;
-						smallestLengthFrom = x;
-						smallestLengthTo = y;
+						smallestLengthEdge = potentialNewEdge;
 					}
 				}
 			}
 
-			edges.add(input.places.get(smallestLengthFrom));
+			t.addEdge(smallestLengthEdge);
 
-			smallestLengthFound = 9999999;
+			smallestLengthFound = Integer.MAX_VALUE;
 		}
 
-		return edges;
+		return t;
 	}
 }

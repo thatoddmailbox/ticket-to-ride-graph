@@ -234,7 +234,7 @@ public class Main {
 		board.addPath("Miami", "Charleston", 4, 1);
 
 		// algorithms
-		ArrayList<String> path = Kruskal.findPath(board);
-		System.out.println(path.toString());
+		Tree tree = Kruskal.findTree(board);
+		System.out.println(tree.edges.toString());
 	}
 }
