@@ -26,6 +26,9 @@ public class Kruskal {
 						if (t.edges.contains(potentialNewEdge) || t.edges.contains(reverseOfNewEdge)) {
 							continue;
 						}
+						if (t.addingEdgeWouldCauseCycle(potentialNewEdge)) {
+							continue;
+						}
 						smallestLengthFound = length;
 						smallestLengthEdge = potentialNewEdge;
 					}
