@@ -3,15 +3,17 @@ import java.util.Objects;
 public class Edge {
 	public String firstCity;
 	public String secondCity;
+	public int weight;
 
-	public Edge(String f, String t) {
+	public Edge(String f, String t, int w) {
 		firstCity = f;
 		secondCity = t;
+		weight = w;
 	}
 
 	@Override
 	public String toString() {
-		return "Edge{" + firstCity + " -> " + secondCity + "}";
+		return "Edge{" + firstCity + " -> " + secondCity + " (" + weight + ")}";
 	}
 
 	@Override
@@ -25,7 +27,7 @@ public class Edge {
 
 		final Edge other = (Edge) obj;
 
-		if (!this.firstCity.equals(other.firstCity) || !this.secondCity.equals(other.secondCity)) {
+		if (!this.firstCity.equals(other.firstCity) || !this.secondCity.equals(other.secondCity) || this.weight != other.weight) {
 			return false;
 		}
 
@@ -34,6 +36,6 @@ public class Edge {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(firstCity, secondCity);
+		return Objects.hash(firstCity, secondCity, weight);
 	}
 }

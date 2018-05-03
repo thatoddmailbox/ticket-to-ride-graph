@@ -28,8 +28,8 @@ public class Tree {
 		}
 	}
 
-	public void addEdge(String from, String to) {
-		addEdge(new Edge(from, to));
+	public void addEdge(String from, String to, int weight) {
+		addEdge(new Edge(from, to, weight));
 	}
 
 	public String getDotFile() {
