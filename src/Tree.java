@@ -1,4 +1,9 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class Tree {
 	public ArrayList<String> nodes;
@@ -25,5 +30,28 @@ public class Tree {
 
 	public void addEdge(String from, String to) {
 		addEdge(new Edge(from, to));
+	}
+
+	public String getDotFile() {
+		StringBuffer buff = new StringBuffer();
+
+		/*
+		digraph G {
+		  "Welcome" -> "To"
+		  "To" -> "Web"
+		  "To" -> "GraphViz!"
+		}
+		 */
+
+		buff.append("digraph G {");
+
+		for (Edge e: edges) {
+			buff.append("\"" + e.firstCity + "\" -> \"" + e.secondCity + "\"" );
+		}
+
+		buff.append("}");
+
+		return buff.toString();
+
 	}
 }
