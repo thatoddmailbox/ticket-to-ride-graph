@@ -5,7 +5,7 @@ public class Kruskal {
 
 		Tree t = new Tree();
 
-		while (t.nodes.size() < (input.places.size() - 1)) {
+		while (t.edges.size() < (input.places.size() - 1)) {
 			for (int x = 0; x < input.adjacency.length; x++) {
 				for (int y = 0; y < input.adjacency[0].length; y++) {
 					if (x == y) {

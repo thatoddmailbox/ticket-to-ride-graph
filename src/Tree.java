@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -19,20 +20,45 @@ public class Tree {
 		nodes.add(node);
 	}
 
+	public ArrayList<Edge> getEdgesFromNode(String node) {
+		ArrayList<Edge> foundEdges = new ArrayList<Edge>();
+		for (Edge e : edges) {
+			if (e.firstCity.equals(node)) {
+				foundEdges.add(e);
+			}
+		}
+		return foundEdges;
+	}
+
+	public boolean traverseWhileAvoiding(String currentNode, ArrayList<String> visitedNodes) {
+		// get all the edges going from this node
+		ArrayList<Edge> edgesFromCurrent = getEdgesFromNode(currentNode);
+		// check if we've been here before, if so fail
+		if (visitedNodes.contains(currentNode)) {
+			return false;
+		}
+		// keep track that we've visited this node
+		visitedNodes.add(currentNode);
+		// traverse those edges
+		for (Edge e : edgesFromCurrent) {
+			if (!traverseWhileAvoiding(e.secondCity, visitedNodes)) {
+				return false;
+			}
+		}
+		// we survived
+		return true;
+	}
+
 	public boolean addingEdgeWouldCauseCycle(Edge e) {
 		// try creating a new tree with the edge
 		Tree potentialNewTree = new Tree(this);
 		potentialNewTree.addEdge(e);
 
-		// check each edge in the tree, see if we visit any node twice
-		HashMap<String, Boolean> visitedPlaces = new HashMap<String, Boolean>();
-		for (Edge edgeToCheck : potentialNewTree.edges) {
-			boolean hasVisited = visitedPlaces.getOrDefault(edgeToCheck.secondCity, false);
-			if (hasVisited) {
-				// have been to this node before
+		for (String node : potentialNewTree.nodes) {
+			if (!potentialNewTree.traverseWhileAvoiding(node, new ArrayList<String>())) {
+				// found a cycle
 				return true;
 			}
-			visitedPlaces.put(edgeToCheck.secondCity, true);
 		}
 
 		return false;
@@ -61,12 +87,14 @@ public class Tree {
 		  "To" -> "Web"
 		  "To" -> "GraphViz!"
 		}
+
+		LR_0 -> LR_2 [ label = "SS(B)" ];
 		 */
 
-		buff.append("digraph G {");
+		buff.append("digraph G {\n");
 
 		for (Edge e: edges) {
-			buff.append("\"" + e.firstCity + "\" -> \"" + e.secondCity + "\"" );
+			buff.append("\t\"" + e.firstCity + "\" -> \"" + e.secondCity + "\"" + "[ label = \"" + e.weight + "\" ];\n");
 		}
 
 		buff.append("}");
