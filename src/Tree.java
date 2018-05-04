@@ -113,6 +113,8 @@ public class Tree {
 			buff.append("\t\"" + e.firstCity + "\" -- \"" + e.secondCity + "\"" + "[ label = \"" + e.weight + "\" ];\n");
 		}
 
+		buff.append("\t" + "{ rank=same; \"Sault St Marie\" \"Atlanta\" }\n");
+
 		buff.append("}");
 
 		return buff.toString();
