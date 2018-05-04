@@ -26,11 +26,14 @@ public class Tree {
 			if (e.firstCity.equals(node)) {
 				foundEdges.add(e);
 			}
+			if (e.secondCity.equals(node)) {
+				foundEdges.add(e.getReverse());
+			}
 		}
 		return foundEdges;
 	}
 
-	public boolean traverseWhileAvoiding(String currentNode, ArrayList<String> visitedNodes) {
+	public boolean traverseWhileAvoiding(String currentNode, ArrayList<String> visitedNodes, ArrayList<Edge> usedEdges) {
 		// get all the edges going from this node
 		ArrayList<Edge> edgesFromCurrent = getEdgesFromNode(currentNode);
 		// check if we've been here before, if so fail
@@ -41,7 +44,11 @@ public class Tree {
 		visitedNodes.add(currentNode);
 		// traverse those edges
 		for (Edge e : edgesFromCurrent) {
-			if (!traverseWhileAvoiding(e.secondCity, visitedNodes)) {
+			if (usedEdges.contains(e) || usedEdges.contains(e.getReverse())) {
+				continue;
+			}
+			usedEdges.add(e);
+			if (!traverseWhileAvoiding(e.secondCity, visitedNodes, usedEdges)) {
 				return false;
 			}
 		}
@@ -55,7 +62,7 @@ public class Tree {
 		potentialNewTree.addEdge(e);
 
 		for (String node : potentialNewTree.nodes) {
-			if (!potentialNewTree.traverseWhileAvoiding(node, new ArrayList<String>())) {
+			if (!potentialNewTree.traverseWhileAvoiding(node, new ArrayList<String>(), new ArrayList<Edge>())) {
 				// found a cycle
 				return true;
 			}
@@ -100,10 +107,10 @@ public class Tree {
 		LR_0 -> LR_2 [ label = "SS(B)" ];
 		 */
 
-		buff.append("digraph G {\n");
+		buff.append("graph G {\n");
 
 		for (Edge e: edges) {
-			buff.append("\t\"" + e.firstCity + "\" -> \"" + e.secondCity + "\"" + "[ label = \"" + e.weight + "\" ];\n");
+			buff.append("\t\"" + e.firstCity + "\" -- \"" + e.secondCity + "\"" + "[ label = \"" + e.weight + "\" ];\n");
 		}
 
 		buff.append("}");
