@@ -78,6 +78,15 @@ public class Tree {
 		addEdge(new Edge(from, to, weight));
 	}
 
+	public Integer getPathLength (){
+		int total = 0;
+
+		for (Edge e: edges) {
+			total += e.weight;
+		}
+		return total;
+	}
+
 	public String getDotFile() {
 		StringBuffer buff = new StringBuffer();
 
