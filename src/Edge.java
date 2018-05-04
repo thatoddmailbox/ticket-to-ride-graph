@@ -11,6 +11,10 @@ public class Edge {
 		weight = w;
 	}
 
+	public Edge getReverse() {
+		return new Edge(secondCity, firstCity, weight);
+	}
+
 	@Override
 	public String toString() {
 		return "Edge{" + firstCity + " -> " + secondCity + " (" + weight + ")}";
