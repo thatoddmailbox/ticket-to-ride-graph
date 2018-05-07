@@ -30,9 +30,21 @@ public class reverse_delete {
                 //[adjancency from] [adjacency to]
             }
         }
-        //sort the list
-
-
+        for (int i = 0; i < paths.size(); i++){
+            if(!deletingwouldfuckitup(initial_graph , paths.get(i), paths)){
+                initial_graph.deletePath(paths.get(i).side_a, paths.get(i).side_b);
+            }
+        }
+        System.out.println(initial_graph.numbOfTrees());
+        int numofpaths = 0;
+        for (int i = 0; i < initial_graph.adjacency.length; i++) {
+            for (int j = 0; j < initial_graph.adjacency[0].length; j++) {
+                if(initial_graph.adjacency[j][i] != 0){
+                    numofpaths++;
+                }
+            }
+        }
+        System.out.println("Paths: "+numofpaths/2);
         return initial_graph;
     }
 
@@ -40,6 +52,10 @@ public class reverse_delete {
         Graph g2 = g;
         int estimated_length = ps.size();
         g2.deletePath(p.side_a, p.side_b);
-        return false;
+        if (g2.numbOfTrees() == g.numbOfTrees()){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

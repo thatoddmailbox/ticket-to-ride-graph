@@ -73,11 +73,13 @@ public class Tree {
 
 	public void addEdge(Edge e) {
 		edges.add(e);
-		if (!nodes.contains(e.firstCity)) {
-			nodes.add(e.firstCity);
-		}
-		if (!nodes.contains(e.secondCity)) {
-			nodes.add(e.secondCity);
+		if(!edges.contains(e)) {
+			if (!nodes.contains(e.firstCity)) {
+				nodes.add(e.firstCity);
+			}
+			if (!nodes.contains(e.secondCity)) {
+				nodes.add(e.secondCity);
+			}
 		}
 	}
 
