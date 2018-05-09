@@ -114,6 +114,11 @@ public class Tree {
 		}
 
 		buff.append("\t" + "{ rank=same; \"Sault St Marie\" \"Atlanta\" }\n");
+		buff.append("\t" + "{ rank=same; \"Los Angeles\" \"Winnipeg\" }\n");
+		buff.append("\t" + "{ rank=same; \"San Francisco\" \"Duluth\" }\n");
+		buff.append("\t" + "{ rank=same; \"Denver\" \"Salt Lake City\" }\n");
+
+
 
 		buff.append("}");
 
