@@ -9,6 +9,7 @@ public class Main {
 		board.addNode("Calgary");
 		board.addNode("Seattle");
 		board.addNode("Portland");
+		board.addNode("Oregon");
 		board.addNode("Salt Lake City");
 		board.addNode("Helena");
 		board.addNode("San Francisco");
@@ -236,12 +237,5 @@ public class Main {
 		Tree tree = Kruskal.findTree(board);
 		System.out.println(tree.edges.toString());
 		System.out.println(tree.getDotFile());
-		System.out.println("Path length: " + tree.getPathLength());
-
-        System.out.println( "NEXT: PRIMS");
-
-        Tree abna = Kruskal.findTree(board);
-        System.out.println(abna.edges.toString());
-        System.out.println(abna.getDotFile());
 	}
 }
