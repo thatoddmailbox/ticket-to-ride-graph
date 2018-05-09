@@ -73,13 +73,11 @@ public class Tree {
 
 	public void addEdge(Edge e) {
 		edges.add(e);
-		if(!edges.contains(e)) {
-			if (!nodes.contains(e.firstCity)) {
-				nodes.add(e.firstCity);
-			}
-			if (!nodes.contains(e.secondCity)) {
-				nodes.add(e.secondCity);
-			}
+		if (!nodes.contains(e.firstCity)) {
+			nodes.add(e.firstCity);
+		}
+		if (!nodes.contains(e.secondCity)) {
+			nodes.add(e.secondCity);
 		}
 	}
 
@@ -116,6 +114,11 @@ public class Tree {
 		}
 
 		buff.append("\t" + "{ rank=same; \"Sault St Marie\" \"Atlanta\" }\n");
+		buff.append("\t" + "{ rank=same; \"Los Angeles\" \"Winnipeg\" }\n");
+		buff.append("\t" + "{ rank=same; \"San Francisco\" \"Duluth\" }\n");
+		buff.append("\t" + "{ rank=same; \"Denver\" \"Salt Lake City\" }\n");
+
+
 
 		buff.append("}");
 
