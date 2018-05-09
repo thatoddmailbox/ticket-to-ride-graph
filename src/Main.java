@@ -235,13 +235,7 @@ public class Main {
 
 		// algorithms
 		Tree tree = Kruskal.findTree(board);
-		//System.out.println(tree.edges.toString());
-		//System.out.println(tree.getDotFile());
-		System.out.println("Path Length: " + tree.getPathLength());
-
-		Tree abna = Prims.Prims(board);
-		//System.out.println(tree.edges.toString());
-		//System.out.println(abna.getDotFile());
-		System.out.println("Path Length: " + abna.getPathLength());
+		System.out.println(tree.edges.toString());
+		System.out.println(tree.getDotFile());
 	}
 }

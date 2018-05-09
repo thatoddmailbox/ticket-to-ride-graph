@@ -1,11 +1,23 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Graph {
 	public int[][] adjacency;
 	public ArrayList<String> places;
+	public ArrayList<Integer> traverse_state;
+	public ArrayList<Boolean> visited = new ArrayList<>();
+
+
+
+	public void resetVisited(){
+		for (int i = 0; i < places.size(); i++) {
+			visited.add(false);
+		}
+	}
 
 	public Graph() {
 		places = new ArrayList<>();
+		traverse_state = new ArrayList<>();
 		adjacency = new int[0][0];
 	}
 
@@ -18,6 +30,35 @@ public class Graph {
 			}
 		}
 		adjacency = newAdjacency;
+	}
+
+	public void deletePath(int fromIndex, int toIndex){
+		adjacency[fromIndex][toIndex] = 0;
+		adjacency[toIndex][fromIndex] = 0;
+	}
+	public int numbOfTrees(){
+		int startNode = 0;
+		int count = 0;
+		for (int i = 0; i < places.size(); i++) {
+			traverse_state.add(0); //0,1,2 states
+		}
+		numbOfTrees(0, traverse_state);
+		for (int i = 0; i < traverse_state.size(); i++) {
+			if(traverse_state.get(i) == 2){
+				count++;
+			}
+		}
+		return count;
+
+	}
+	public void numbOfTrees( int wya, ArrayList<Integer> states){
+		states.set(wya, 1); //set to state 2 meaning visited
+		for (int i = 0; i < adjacency[0].length; i++) {
+			if(adjacency[wya][i] != 0 && states.get(i) == 0){
+				numbOfTrees(i, states);
+			}
+		}
+		states.set(wya, 2); //set to third state
 	}
 
 	public void addPath(String from, String to, int length, int pathCount) {
