@@ -237,6 +237,7 @@ public class Main {
 		Tree tree = Kruskal.findTree(board);
 		System.out.println(tree.edges.toString());
 		System.out.println(tree.getDotFile());
+		System.out.println("Path length: " + tree.getPathLength());
 
         System.out.println( "NEXT: PRIMS");
 
