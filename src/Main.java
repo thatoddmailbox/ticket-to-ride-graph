@@ -9,7 +9,6 @@ public class Main {
 		board.addNode("Calgary");
 		board.addNode("Seattle");
 		board.addNode("Portland");
-		board.addNode("Oregon");
 		board.addNode("Salt Lake City");
 		board.addNode("Helena");
 		board.addNode("San Francisco");

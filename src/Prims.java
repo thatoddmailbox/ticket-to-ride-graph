@@ -2,7 +2,7 @@ import java.util.*;
 public class Prims {
     public static Tree Prims(Graph input) {
         boolean done = false;
-        int z = 0;
+        int CurrentCitiesIndex = 0;
         Boolean checkedFullTree= false;
         Edge smallestLengthEdge = null;
         Tree MST = new Tree();
@@ -23,7 +23,7 @@ public class Prims {
 //                                System.out.println(input.places.get(currentcities[x]) + " --> " + input.places.get(y) + " (" + input.adjacency[currentcities[x]][y] + ")");
 //                                System.out.println(input.places.get(y));
                                 smallestLengthEdge = new Edge(input.places.get(x), input.places.get(y), input.adjacency[x][y]);
-                                currentcities[z]=y;
+                                currentcities[CurrentCitiesIndex]=y;
 //                                System.out.println("smallest edge" + smallestLengthEdge);
                             }
                         }
@@ -36,7 +36,7 @@ public class Prims {
             if(!MST.addingEdgeWouldCauseCycle(smallestLengthEdge)) {
                 MST.addEdge(smallestLengthEdge);
                 System.out.println("adding");
-                z++;
+                CurrentCitiesIndex++;
             }
 
             for (int i = 0; i < input.adjacency.length-2; i++) {
