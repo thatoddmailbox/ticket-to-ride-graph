@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class reverseDelete {
-    public static Graph fsp(Graph initialGraph){
+    public static Tree fsp(Graph initialGraph){
         ArrayList<path> sortedAdjacency;
         ArrayList<path> paths = new ArrayList<>();
         boolean sorted = false;
@@ -47,11 +47,30 @@ public class reverseDelete {
         }
         System.out.println(initialGraph.numbOfTrees());
         int numofpaths = 0;
+        for (int i = 0; i < initialGraph.adjacency.length; i++) {
+            for (int j = 0; j < initialGraph.adjacency[0].length; j++) {
+                if(initialGraph.adjacency[i][j] != 0 ){
+                    numofpaths++;
+                }
+            }
+        }
         System.out.println("Paths: "+numofpaths/2);
-        return initialGraph;
+        Tree t = new Tree();
+        for (int i = 0; i < initialGraph.places.size(); i++) {
+            t.addNode(initialGraph.places.get(i));
+        }
+        for (int i = 0; i < initialGraph.adjacency.length; i++) {
+            for (int j = 0; j < initialGraph.adjacency[0].length; j++) {
+                if(initialGraph.adjacency[i][j]!= 0 ){
+                    t.addEdge(new Edge(initialGraph.places.get(i), initialGraph.places.get(j), initialGraph.adjacency[i][j]));
+                    initialGraph.deletePath(i,j);
+                }
+            }
+        }
+        return t;
     }
     public static boolean deleteCheck(Graph g, path p, ArrayList<path> ps){
-        Graph g2 = g;
+        Graph g2 = new Graph(g);
         int estimated_length = ps.size();
         g2.deletePath(p.side_a, p.side_b);
         System.out.println(g2.numbOfTrees()+ " "+g.numbOfTrees());

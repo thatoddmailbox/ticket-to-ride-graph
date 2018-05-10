@@ -5,20 +5,25 @@ public class Graph {
 	public int[][] adjacency;
 	public ArrayList<String> places;
 	public ArrayList<Integer> traverse_state;
-	public ArrayList<Boolean> visited = new ArrayList<>();
-
-
-
-	public void resetVisited(){
-		for (int i = 0; i < places.size(); i++) {
-			visited.add(false);
-		}
-	}
 
 	public Graph() {
 		places = new ArrayList<>();
 		traverse_state = new ArrayList<>();
 		adjacency = new int[0][0];
+	}
+
+	public Graph(Graph clone) {
+		adjacency = new int[clone.adjacency.length][clone.adjacency[0].length];
+		for (int i = 0; i < clone.adjacency.length; i++) {
+			for (int j = 0; j < clone.adjacency[i].length; j++) {
+				adjacency[i][j] = clone.adjacency[i][j];
+			}
+		}
+		places = new ArrayList<>();
+		for (String clonePlace : clone.places) {
+			places.add(clonePlace);
+		}
+		traverse_state = new ArrayList<>();
 	}
 
 	public void addNode(String name) {
@@ -37,6 +42,8 @@ public class Graph {
 		adjacency[toIndex][fromIndex] = 0;
 	}
 	public int numbOfTrees(){
+		traverse_state.clear();
+
 		int startNode = 0;
 		int count = 0;
 		for (int i = 0; i < places.size(); i++) {
@@ -55,13 +62,14 @@ public class Graph {
 
 	public void numbOfTrees( int wya, ArrayList<Integer> states){
 		 //set to state 2 meaning visited
-		states.set(wya, 2);
+		states.set(wya, 1);
 		for (int i = 0; i < adjacency[wya].length; i++) {
 			if(adjacency[wya][i] != 0 && states.get(i) == 0){
 				//System.out.println("HERE");
 				numbOfTrees(i, states);
 			}
 		}
+		states.set(wya, 2);
 
 	}
 
@@ -71,3 +79,4 @@ public class Graph {
 		adjacency[fromIndex][toIndex] = length;
 	}
 }
+
