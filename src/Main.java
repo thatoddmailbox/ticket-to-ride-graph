@@ -237,5 +237,14 @@ public class Main {
 		Tree tree = Kruskal.findTree(board);
 		System.out.println(tree.edges.toString());
 		System.out.println(tree.getDotFile());
+
+		Tree tree_reverse = reverseDelete.fsp(board);
+		System.out.println(tree_reverse.edges.toString());
+		System.out.println(tree_reverse.getDotFile());
+		int Count1 = 0;
+		for (Edge e: tree_reverse.edges) {
+			Count1 += e.weight;
+		}
+		System.out.println("Count = "+ Count1);
 	}
 }
