@@ -7,6 +7,30 @@ public class Main {
 
 
 		// places
+//		This is test code, it's very important for testing so don't delete it
+//		board.addNode("A");
+//		board.addNode("B");
+//		board.addNode("C");
+//		board.addNode("D");
+//		board.addNode("E");
+//
+//		board.addPath("A", "B", 3, 1);
+//		board.addPath("B", "A", 3, 1);
+//		board.addPath("B", "C", 2, 1);
+//		board.addPath("C", "B", 2, 1);
+//		board.addPath("A", "D", 4, 1);
+//		board.addPath("D", "A", 4, 1);
+//		board.addPath("C", "D", 64, 1);
+//		board.addPath("D", "C", 64, 1);
+//		board.addPath("B", "E", 600, 1);
+//		board.addPath("E", "B", 600, 1);
+//		board.addPath("E", "D", 4, 1);
+//		board.addPath("D", "E", 4, 1);
+//		board.addPath("D", "B", 6, 1);
+//		board.addPath("B", "D", 6, 1);
+//		board.addPath("E", "C", 5, 1);
+//		board.addPath("C", "E", 5, 1);
+
 		board.addNode("Vancouver");
 		board.addNode("Calgary");
 		board.addNode("Seattle");
