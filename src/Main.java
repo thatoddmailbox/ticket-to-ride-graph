@@ -1,10 +1,36 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
 	public static void main(String[] args) {
 		Graph board = new Graph();
 
+
 		// places
+//		This is test code, it's very important for testing so don't delete it
+//		board.addNode("A");
+//		board.addNode("B");
+//		board.addNode("C");
+//		board.addNode("D");
+//		board.addNode("E");
+//
+//		board.addPath("A", "B", 3, 1);
+//		board.addPath("B", "A", 3, 1);
+//		board.addPath("B", "C", 2, 1);
+//		board.addPath("C", "B", 2, 1);
+//		board.addPath("A", "D", 4, 1);
+//		board.addPath("D", "A", 4, 1);
+//		board.addPath("C", "D", 64, 1);
+//		board.addPath("D", "C", 64, 1);
+//		board.addPath("B", "E", 600, 1);
+//		board.addPath("E", "B", 600, 1);
+//		board.addPath("E", "D", 4, 1);
+//		board.addPath("D", "E", 4, 1);
+//		board.addPath("D", "B", 6, 1);
+//		board.addPath("B", "D", 6, 1);
+//		board.addPath("E", "C", 5, 1);
+//		board.addPath("C", "E", 5, 1);
+
 		board.addNode("Vancouver");
 		board.addNode("Calgary");
 		board.addNode("Seattle");
@@ -76,6 +102,7 @@ public class Main {
 
 		board.addPath("San Francisco", "Portland", 5, 2);
 		board.addPath("San Francisco", "Los Angeles", 3, 2);
+		board.addPath("San Francisco", "Salt Lake City", 5, 2);
 
 		board.addPath("Los Angeles", "San Francisco", 3, 2);
 		board.addPath("Los Angeles", "Las Vegas", 2, 1);
@@ -228,7 +255,7 @@ public class Main {
 		board.addPath("Charleston", "Atlanta", 2, 1);
 		board.addPath("Charleston", "Miami", 4, 1);
 
-		board.addPath("Miami", "New Orleans", 5, 1);
+		board.addPath("Miami", "New Orleans", 6, 1);
 		board.addPath("Miami", "Atlanta", 5, 1);
 		board.addPath("Miami", "Charleston", 4, 1);
 
@@ -237,13 +264,18 @@ public class Main {
 		System.out.println(tree.edges.toString());
 		System.out.println(tree.getDotFile());
 
-		Tree tree_reverse = reverseDelete.fsp(board);
-		System.out.println(tree_reverse.edges.toString());
-		System.out.println(tree_reverse.getDotFile());
-		int Count1 = 0;
-		for (Edge e: tree_reverse.edges) {
-			Count1 += e.weight;
+//		Tree tree_reverse = reverseDelete.fsp(board);
+//		System.out.println(tree_reverse.edges.toString());
+//		System.out.println(tree_reverse.getDotFile());
+//		int Count1 = 0;
+//		for (Edge e: tree_reverse.edges) {
+//			Count1 += e.weight;
+//		}
+//		System.out.println("Count = "+ Count1);
+
+		HashMap<String, Integer> lengths = BestShortestPath.findPaths(board, "Miami");
+		for (String place : lengths.keySet()) {
+			System.out.println(place + ": " + lengths.get(place));
 		}
-		System.out.println("Count = "+ Count1);
 	}
 }

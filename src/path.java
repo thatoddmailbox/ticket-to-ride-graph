@@ -3,9 +3,8 @@ public class path {
     public int side_b;
     public int weight;
 
-
-    public int compareTo(path comparestu) {
-        int compareage=((path)comparestu).weight;
+    public int compareTo(path other) {
+        int compareage = ((path)other).weight;
         return compareage-this.weight;
     }
 
