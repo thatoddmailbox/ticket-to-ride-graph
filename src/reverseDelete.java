@@ -34,14 +34,10 @@ public class reverseDelete {
             }
         });
 
-        for (int i = 0; i < paths.size(); i++) {
-            System.out.println("Path from "+paths.get(i).side_a +" to "+paths.get(i).side_b+" : "+paths.get(i).weight);
-        }
 
         for (int i = 0; i < paths.size(); i++){
             //System.out.println(deleteCheck(initialGraph , paths.get(i), paths));
             if(!deleteCheck(initialGraph , paths.get(i), paths)){
-                System.out.println("Deleted: "+ paths.get(i).side_a+" to "+paths.get(i).side_b);
                 initialGraph.deletePath(paths.get(i).side_a, paths.get(i).side_b);
             }
         }

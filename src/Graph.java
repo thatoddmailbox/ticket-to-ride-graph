@@ -51,8 +51,8 @@ public class Graph {
 		}
 		numbOfTrees(0, traverse_state);
 
-		for (int i = 0; i < traverse_state.size(); i++) {
-			if(traverse_state.get(i) == 2){
+		for (int i = 0; i < traverse_state.size(); i++) { if(traverse_state.get(i) == 2){
+				System.out.println(traverse_state.get(i));
 				count++;
 			}
 		}
